@@ -1,0 +1,14 @@
+name: 临时导出Secret（用完立刻删除！）
+on: workflow_dispatch
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打印secret（仅自己可见日志）
+        env:
+          NINEBOT_AUTHORIZATION: ${{ secrets.NINEBOT_AUTHORIZATION }}
+          NINEBOT_DEVICE_ID: ${{ secrets.NINEBOT_DEVICE_ID }}
+        run: |
+          echo "NINEBOT_AUTHORIZATION=$NINEBOT_AUTHORIZATION"
+          echo "NINEBOT_DEVICE_ID=$NINEBOT_DEVICE_ID"
